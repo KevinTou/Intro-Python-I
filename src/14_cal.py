@@ -22,3 +22,42 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+# if input == "":
+# Render the calendar for the current month
+
+# if only one argument (assume month)
+# Render the calendar for the current year
+
+# if two arguments (assume month and year)
+
+# else:
+# print a usage statement for the correct format
+
+# exit
+
+x = input(f"14_cal.py month [year]: ")
+
+
+def get_calendar(user_input):
+    # Creates a list from the user_input string
+    month_year = user_input.split()
+
+    # Set current month and year
+    selected_month = datetime.now().month
+    selected_year = datetime.now().year
+
+    if len(month_year) > 2:
+        print(f'Wrong format...\nExpecting 14_cal.py month [year]: MM YYYY')
+    elif len(month_year) == 2:
+        selected_month = int(month_year[0])
+        selected_year = int(month_year[1])
+        print(calendar.month(selected_year, selected_month))
+    elif len(month_year) == 1:
+        selected_month = int(month_year[0])
+        print(calendar.month(selected_year, selected_month))
+    else:
+        print(calendar.month(selected_year, selected_month))
+
+
+get_calendar(x)
